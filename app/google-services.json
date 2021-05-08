@@ -1,0 +1,164 @@
+{
+  "project_info": {
+    "project_number": "946651561345",
+    "firebase_url": "https://mad-project-bc562-default-rtdb.firebaseio.com",
+    "project_id": "mad-project-bc562",
+    "storage_bucket": "mad-project-bc562.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946651561345:android:4193bfd27dfeb429c7bc80",
+        "android_client_info": {
+          "package_name": "com.chikuai.codeplay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946651561345-bcquukmjv2q8p4qfd102gr93h2mpv89i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEmGSJbJmA8_D1-oyTA-qXV8uXdOEjmC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946651561345-bcquukmjv2q8p4qfd102gr93h2mpv89i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946651561345:android:b43bf5e09098de70c7bc80",
+        "android_client_info": {
+          "package_name": "com.example.expensetrackerforuniversitystudent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946651561345-bcquukmjv2q8p4qfd102gr93h2mpv89i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEmGSJbJmA8_D1-oyTA-qXV8uXdOEjmC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946651561345-bcquukmjv2q8p4qfd102gr93h2mpv89i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946651561345:android:42542fa0c1b76167c7bc80",
+        "android_client_info": {
+          "package_name": "com.example.madproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946651561345-f6kvr75e707gaehd69habijj60v2oarm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.madproject",
+            "certificate_hash": "ca63bea0c220fafb68f6af2ca07146bf49ee040f"
+          }
+        },
+        {
+          "client_id": "946651561345-bcquukmjv2q8p4qfd102gr93h2mpv89i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEmGSJbJmA8_D1-oyTA-qXV8uXdOEjmC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946651561345-bcquukmjv2q8p4qfd102gr93h2mpv89i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946651561345:android:b94b1fa8a686582cc7bc80",
+        "android_client_info": {
+          "package_name": "com.example.sliittodoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946651561345-bcquukmjv2q8p4qfd102gr93h2mpv89i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEmGSJbJmA8_D1-oyTA-qXV8uXdOEjmC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946651561345-bcquukmjv2q8p4qfd102gr93h2mpv89i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946651561345:android:784bc7cb19b0c5dac7bc80",
+        "android_client_info": {
+          "package_name": "com.harindu.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946651561345-bcquukmjv2q8p4qfd102gr93h2mpv89i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEmGSJbJmA8_D1-oyTA-qXV8uXdOEjmC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946651561345-bcquukmjv2q8p4qfd102gr93h2mpv89i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

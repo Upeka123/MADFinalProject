@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Expense Tracker for university student</string>
+
+    <string-array name="items">
+        <item>Select item</item>
+        <item>Transport</item>
+        <item>Food</item>
+        <item>Boarding place</item>
+        <item>Entertainment</item>
+        <item>Education</item>
+        <item>Charity</item>
+        <item>Health</item>
+        <item>Others</item>
+
+
+    </string-array>
+</resources>
