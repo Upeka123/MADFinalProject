@@ -8,14 +8,15 @@ public class Data {
     public Data() {
     }
 
-    public Data(String item, String date, String id, String note, int amount, int month) {
+    public Data(String item, String date, String id, String note, int amount) {
         this.item = item;
         this.date = date;
         this.id = id;
         this.note = note;
         this.amount = amount;
-        this.month = month;
+
     }
+
 
     public String getItem() {
         return item;
@@ -57,11 +58,4 @@ public class Data {
         this.amount = amount;
     }
 
-    public int getMonth() {
-        return month;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
-    }
 }

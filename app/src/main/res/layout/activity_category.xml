@@ -35,7 +35,8 @@
             android:columnWidth="100dp"
             android:gravity="center"
             android:numColumns="2"
-            tools:listitem="@layout/category_items" />
+            tools:listitem="@layout/category_items"
+            android:background="@color/dark_blue"/>
 
 
 

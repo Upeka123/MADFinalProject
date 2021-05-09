@@ -48,6 +48,11 @@
         <activity android:name=".activity.QuizActivity"
             android:theme="@style/AppThemeBar"
             />
+        <activity android:name=".activity.Main1Activity"/>
+        <activity android:name=".activity.Quiz1Activity" />
+        <activity android:name=".activity.Questions1Activity" />
+        <activity android:name=".activity.Sets1Activity" />
+        <activity android:name=".activity.Category1Activity1" />
 
 
 

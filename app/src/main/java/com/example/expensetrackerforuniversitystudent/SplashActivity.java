@@ -1,31 +1,28 @@
 package com.example.expensetrackerforuniversitystudent;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
+import com.example.expensetrackerforuniversitystudent.activity.CategoryActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.example.expensetrackerforuniversitystudent.activity.CategoryActivity;
-import com.example.expensetrackerforuniversitystudent.models.CategoryModel;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.expensetrackerforuniversitystudent.models.CategoryModel;
+
+
+import static java.lang.Thread.sleep;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -33,7 +30,6 @@ public class SplashActivity extends AppCompatActivity {
     public static List<CategoryModel> catList=new ArrayList<>();
     public static int selected_cat_index=0;
     private FirebaseFirestore firestore;
-    private CollectionReference collectionReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +38,6 @@ public class SplashActivity extends AppCompatActivity {
         Animation animation= AnimationUtils.loadAnimation(this,R.anim.splashanimantion);
         logo.setAnimation(animation);
         firestore=FirebaseFirestore.getInstance();
-        collectionReference = firestore.collection("QUIZ");
         new Thread(new Runnable() {
             @Override
             public void run() {

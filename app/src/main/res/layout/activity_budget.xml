@@ -48,7 +48,9 @@
             android:layout_margin="20dp"
             app:fabSize="normal"
             android:src="@drawable/ic_add"
-            android:backgroundTint="#FFC107"
+            app:tint="@color/yellow"
+            app:backgroundTint="@color/yellow"
+            android:backgroundTint="@color/dark_blue"
             />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
