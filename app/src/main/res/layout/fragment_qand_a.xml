@@ -7,6 +7,13 @@
     tools:context=".QandA"
     android:background="@color/dark_blue">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/homeToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        tools:ignore="MissingConstraints" />
+
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/materialButtonToggleGroup"
         android:layout_width="wrap_content"
@@ -15,7 +22,7 @@
         app:checkedButton="@+id/allBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeToolbar"
         app:singleSelection="true">
 
         <Button

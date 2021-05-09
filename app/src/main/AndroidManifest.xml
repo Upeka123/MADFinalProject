@@ -13,25 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpenseTrackerForUniversityStudent">
         <activity android:name=".budgetActivity" />
-        <activity android:name=".MainActivityExpenses">
+
+        <activity android:name=".MainActivity_ToDo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name=".MainActivityExpenses"/>
 
-        </activity>
-
-<!--        pasindu-->
+        <!--        pasindu-->
         <activity android:name=".QandA"/>
         <activity android:name=".SubmitAnswers" />
         <activity android:name=".Answers" />
         <activity android:name=".EditQuestion" />
         <activity android:name=".AddQuestion"/>
+
+        <!-- Rishan-->
+        <activity android:name=".ResetPassword" />
+        <activity android:name=".ToDo_Home_New" />
+        <activity android:name=".Register" />
+        <activity android:name=".Log_in">
+
+        </activity>
+
 
 
     </application>

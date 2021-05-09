@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Sp_blue"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Update your task"
+        android:gravity="center"
+        android:background="@color/yellow"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:textSize="18dp"
+        android:textStyle="bold">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Task"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                >
+
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4">
+
+            <EditText
+                android:id="@+id/mEditTextTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Task...."
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                >
+
+            </EditText>
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Discription"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                >
+
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4">
+
+            <EditText
+                android:id="@+id/mEditTextDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Discription...."
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                >
+
+            </EditText>
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        >
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+            <Button
+                android:id="@+id/btnDelete"
+                android:text="Delete"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/yellow"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </Button>
+
+        </RelativeLayout>
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+            <Button
+                android:id="@+id/btnUpdate"
+                android:text="Update"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/yellow"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </Button>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

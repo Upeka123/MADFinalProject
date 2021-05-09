@@ -3,15 +3,21 @@ package com.example.expensetrackerforuniversitystudent;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -66,6 +72,10 @@ public class budgetActivity extends AppCompatActivity {
     private int amount = 0;
 
     private String note = ("");
+    Toolbar toolbar;
+    private final static String MyPref = "MyPref";
+    SharedPreferences sharedPreferences;
+    private FirebaseAuth mAuth;
 
 
 
@@ -73,6 +83,13 @@ public class budgetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
+
+        toolbar=findViewById(R.id.homeToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Expense Tracker");
+
+        sharedPreferences  = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
+        mAuth=FirebaseAuth.getInstance();
 
         nAuth = FirebaseAuth.getInstance();
         budgetRef = FirebaseDatabase.getInstance().getReference().child("budget").child(nAuth.getCurrentUser().getUid());
@@ -116,6 +133,27 @@ public class budgetActivity extends AppCompatActivity {
                 additem();
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logOut:
+                sharedPreferences.edit().remove("stuID").apply();
+
+                mAuth.signOut();
+                Intent intent=new Intent(budgetActivity.this, Log_in.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void additem() {
@@ -299,135 +337,135 @@ public class budgetActivity extends AppCompatActivity {
 
     }
 
-        public class MyViewHolder extends RecyclerView.ViewHolder{
-            View mView;
-            public ImageView imageView;
-            public TextView note;
+    public class MyViewHolder extends RecyclerView.ViewHolder{
+        View mView;
+        public ImageView imageView;
+        public TextView note;
 
-            public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView) {
 
-                super(itemView);
-                mView = itemView;
-                imageView =itemView.findViewById(R.id.Imageview);
-                note =itemView.findViewById(R.id.note);
-            }
-            public void setItemName (String itemName){
+            super(itemView);
+            mView = itemView;
+            imageView =itemView.findViewById(R.id.Imageview);
+            note =itemView.findViewById(R.id.note);
+        }
+        public void setItemName (String itemName){
 
-                TextView item = mView.findViewById(R.id.item);
-                item.setText(itemName);
-            }
-
-            public void setNote (String note){
-
-                TextView nNote = mView.findViewById(R.id.note);
-                nNote.setText(note);
-            }
-
-            public void setItemAmount (String itemAmount){
-
-                TextView item = mView.findViewById(R.id.amount);
-                item.setText(itemAmount);
-            }
-
-            public void setDate (String itemDate){
-
-                TextView item = mView.findViewById(R.id.date);
-                item.setText(itemDate);
-            }
+            TextView item = mView.findViewById(R.id.item);
+            item.setText(itemName);
         }
 
-        private void updateData(){
-            AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
-            LayoutInflater inflater = LayoutInflater.from(this);
-            View mView = inflater.inflate(R.layout.update_layout,null);
+        public void setNote (String note){
 
-            myDialog.setView(mView);
-            final AlertDialog dialog = myDialog.create();
-
-            final TextView nItem = mView.findViewById(R.id.itemName);
-            final EditText nAmount = mView.findViewById(R.id.amount);
-            final EditText nNotes = mView.findViewById(R.id.note);
-
-           // nNotes.setVisibility(View.GONE);
-
-            nItem.setText(Item);
-
-            nAmount.setText(String.valueOf(amount));
-            nAmount.setSelection(String.valueOf(amount).length());
-
-
-            nNotes.setText(String.valueOf(note));
-            nNotes.setSelection(String.valueOf(note).length());
-
-            Button delBtn = mView.findViewById(R.id.deleteBtn);
-            Button upBtn = mView.findViewById(R.id.updateBtn);
-
-            upBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    amount = Integer.parseInt(nAmount.getText().toString());
-                    String note = nNotes.getText().toString();
-
-
-
-
-                    DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyy");
-                    Calendar cal = Calendar.getInstance();
-                    String date = dateFormat.format(cal.getTime());
-
-                    MutableDateTime epoch = new MutableDateTime();
-                    epoch.setDate(0);
-                    DateTime now = new DateTime();
-                    Months months = Months.monthsBetween(epoch, now);
-
-
-                    Data data = new Data(Item, date, post_key,note, amount, months.getMonths());
-                    budgetRef.child(post_key).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(budgetActivity.this, "Updated successfully ", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(budgetActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                            }
-
-
-
-                        }
-                    });
-
-                    dialog.dismiss();
-
-
-                }
-            });
-
-            delBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    budgetRef.child(post_key).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(budgetActivity.this, "Deleted successfully ", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(budgetActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                            }
-
-
-
-                        }
-                    });
-
-                    dialog.dismiss();
-                }
-            });
-
-
-
-
-
-            dialog.show();
+            TextView nNote = mView.findViewById(R.id.note);
+            nNote.setText(note);
         }
+
+        public void setItemAmount (String itemAmount){
+
+            TextView item = mView.findViewById(R.id.amount);
+            item.setText(itemAmount);
+        }
+
+        public void setDate (String itemDate){
+
+            TextView item = mView.findViewById(R.id.date);
+            item.setText(itemDate);
+        }
+    }
+
+    private void updateData(){
+        AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View mView = inflater.inflate(R.layout.update_layout,null);
+
+        myDialog.setView(mView);
+        final AlertDialog dialog = myDialog.create();
+
+        final TextView nItem = mView.findViewById(R.id.itemName);
+        final EditText nAmount = mView.findViewById(R.id.amount);
+        final EditText nNotes = mView.findViewById(R.id.note);
+
+        // nNotes.setVisibility(View.GONE);
+
+        nItem.setText(Item);
+
+        nAmount.setText(String.valueOf(amount));
+        nAmount.setSelection(String.valueOf(amount).length());
+
+
+        nNotes.setText(String.valueOf(note));
+        nNotes.setSelection(String.valueOf(note).length());
+
+        Button delBtn = mView.findViewById(R.id.deleteBtn);
+        Button upBtn = mView.findViewById(R.id.updateBtn);
+
+        upBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                amount = Integer.parseInt(nAmount.getText().toString());
+                String note = nNotes.getText().toString();
+
+
+
+
+                DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyy");
+                Calendar cal = Calendar.getInstance();
+                String date = dateFormat.format(cal.getTime());
+
+                MutableDateTime epoch = new MutableDateTime();
+                epoch.setDate(0);
+                DateTime now = new DateTime();
+                Months months = Months.monthsBetween(epoch, now);
+
+
+                Data data = new Data(Item, date, post_key,note, amount, months.getMonths());
+                budgetRef.child(post_key).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(budgetActivity.this, "Updated successfully ", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(budgetActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                        }
+
+
+
+                    }
+                });
+
+                dialog.dismiss();
+
+
+            }
+        });
+
+        delBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                budgetRef.child(post_key).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(budgetActivity.this, "Deleted successfully ", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(budgetActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                        }
+
+
+
+                    }
+                });
+
+                dialog.dismiss();
+            }
+        });
+
+
+
+
+
+        dialog.show();
+    }
 }
