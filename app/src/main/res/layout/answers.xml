@@ -53,6 +53,7 @@
                 android:text="ITXXXXXXXX"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                android:textSize="18sp"
                 android:layout_alignParentLeft="true"
                 android:layout_toLeftOf="@id/answers_question_item_dep" />
 
@@ -62,12 +63,14 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:text="IT"
+                android:textSize="18sp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/answers_question_item_question"
                 android:layout_width="wrap_content"
+                android:textSize="18sp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/answers_question_item_studentID"
                 android:text="my question is ?"

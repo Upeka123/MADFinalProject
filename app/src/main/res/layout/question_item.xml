@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:text="@string/itxxxxxxxx"
             android:textStyle="bold"
+            android:textSize="18sp"
             android:id="@+id/question_item_studentID"
             android:layout_toStartOf="@id/question_item_dep"
             android:layout_alignParentStart="true"
@@ -29,6 +30,7 @@
             android:id="@+id/question_item_dep"
             android:textColor="@color/black"
             android:text="@string/it"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:layout_alignParentEnd="true"/>
         <TextView
@@ -36,6 +38,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/question_item_question"
             android:textColor="@color/black"
+            android:textSize="18sp"
             android:layout_below="@id/question_item_studentID"
             android:text="@string/question"
             android:maxLines="1"
