@@ -13,12 +13,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.expensetrackerforuniversitystudent.activity.CategoryActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
 public class MainActivityExpenses extends AppCompatActivity {
 
-    private CardView budgetCardView, QandACard,toDoCard;//incomeCardView;
+    private CardView budgetCardView, QandACard,toDoCard,quizCard;//incomeCardView;
     Toolbar toolbar;
     private final static String MyPref = "MyPref";
     SharedPreferences sharedPreferences;
@@ -38,6 +39,7 @@ public class MainActivityExpenses extends AppCompatActivity {
         budgetCardView =findViewById(R.id.homeBtn);
         QandACard= findViewById(R.id.QandACard);
         toDoCard=findViewById(R.id.toDoCard);
+        quizCard=findViewById(R.id.quizCard);
        //incomeCardView = findViewById(R.id.incomeCardView);
 
         budgetCardView.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +65,16 @@ public class MainActivityExpenses extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(MainActivityExpenses.this,ToDo_Home_New.class);
+                startActivity(intent);
+            }
+
+
+        });
+
+        quizCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(MainActivityExpenses.this, CategoryActivity.class);
                 startActivity(intent);
             }
 

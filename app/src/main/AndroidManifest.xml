@@ -37,6 +37,18 @@
 
         </activity>
 
+        //harindu
+        <activity android:name=".activity.ResultActivity"
+            android:theme="@style/AppThemeBar"
+            />
+        <activity android:name=".activity.SetsActivity" />
+        <activity android:name=".activity.CategoryActivity" />
+        <activity android:name=".SplashActivity">
+        </activity>
+        <activity android:name=".activity.QuizActivity"
+            android:theme="@style/AppThemeBar"
+            />
+
 
 
     </application>
