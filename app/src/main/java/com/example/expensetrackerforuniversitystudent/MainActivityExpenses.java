@@ -9,7 +9,7 @@ import android.view.View;
 
 public class MainActivityExpenses extends AppCompatActivity {
 
-    private CardView budgetCardView;//incomeCardView;
+    private CardView budgetCardView, QandACard;//incomeCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,7 @@ public class MainActivityExpenses extends AppCompatActivity {
         setContentView(R.layout.activity_main_expenses);
 
         budgetCardView =findViewById(R.id.homeBtn);
+        QandACard= findViewById(R.id.QandACard);
        //incomeCardView = findViewById(R.id.incomeCardView);
 
         budgetCardView.setOnClickListener(new View.OnClickListener() {
@@ -28,7 +29,15 @@ public class MainActivityExpenses extends AppCompatActivity {
 
 
         });
+        QandACard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(MainActivityExpenses.this,QandA.class);
+                startActivity(intent);
+            }
 
+
+        });
        // incomeCardView.setOnClickListener(new View.OnClickListener() {
         //    @Override
         //    public void onClick(View view) {
