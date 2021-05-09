@@ -56,7 +56,9 @@ public class QandA extends AppCompatActivity {
         sharedPreferences  = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
 
-        stuID = sharedPreferences.getString("stuID", null);
+        stuID = sharedPreferences.getString("stuID", "");
+//        Log.d(TAG, "s"+stuID);
+        System.out.println(stuID);
 
         mAuth=FirebaseAuth.getInstance();
 
