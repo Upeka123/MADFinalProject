@@ -1,4 +1,5 @@
 <resources>
+    //upeka
     <string name="app_name">Expense Tracker for university student</string>
 
     <string-array name="items">
@@ -14,4 +15,33 @@
 
 
     </string-array>
+
+    //pasindu
+    <string-array name="departments">
+        <item>IT</item>
+        <item>BM</item>
+        <item>EN</item>
+    </string-array>
+    <string name="add_a_question">Add a question</string>
+    <string name="question">Question</string>
+    <string name="answers">Answers</string>
+    <string name="All">All</string>
+    <string name="My_Question">My Questions</string>
+    <string name="home">Home</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="edit_question">Edit question</string>
+    <string name="submit_answers">Submit answers</string>
+    <string name="your_answer">Your answer</string>
+    <string name="todo">TODO</string>
+    <string name="expenses">EXPENSES</string>
+    <string name="QnA">Q&amp;A</string>
+    <string name="quiz">Quiz</string>
+    <string name="add">Add</string>
+    <string name="department">Department</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ask_a_question">Ask a Question</string>
+    <string name="itxxxxxxxx">ITXXXXXXXX</string>
+    <string name="it">IT</string>
+    <string name="type_your_answer">Type your answer...</string>
 </resources>

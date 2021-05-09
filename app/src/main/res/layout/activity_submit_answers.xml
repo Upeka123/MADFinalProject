@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SubmitAnswers"
+    android:background="@color/dark_blue">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="360dp" />
+
+    <TextView
+        android:id="@+id/Question_submitAnswers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/question"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:layout_marginLeft="8dp" />
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:outlineAmbientShadowColor="@color/white"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        app:cardBackgroundColor="@color/yellow"
+        app:layout_constraintTop_toBottomOf="@id/Question_submitAnswers"
+        tools:layout_editor_absoluteX="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/submitanswers_question_item_studentID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/submitanswers_question_item_dep"
+                android:text="@string/itxxxxxxxx"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/submitanswers_question_item_dep" />
+
+            <TextView
+                android:id="@+id/submitanswers_question_item_dep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/it"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/submitanswers_question_item_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/submitanswers_question_item_studentID"
+                android:text="@string/My_Question"
+                android:textColor="@color/black" />
+
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/answers_submitAnswers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/answers"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        android:layout_marginLeft="8dp" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/submit_answers_swipe"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/inputKeyboard"
+        app:layout_constraintTop_toBottomOf="@+id/answers_submitAnswers"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/submit_answers_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:layout_editor_absoluteX="0dp" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/inputKeyboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+    <EditText
+        android:id="@+id/submit_answers_answer"
+        android:layout_width="wrap_content"
+        android:layout_weight="3"
+        android:layout_height="match_parent"
+        android:background="@drawable/edit_text_border"
+        android:ems="10"
+        android:hint="@string/type_your_answer"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="17sp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/submit_answers_btn"
+        android:layout_width="40dp"
+        android:layout_weight="0"
+        android:layout_height="40dp"
+        android:background="@drawable/roundedbutton"
+        android:drawableTop="@drawable/ic_send"
+        android:drawableTint="@color/black"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
