@@ -1,5 +1,6 @@
 package com.example.expensetrackerforuniversitystudent;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +32,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class Log_in extends AppCompatActivity {
 
 
-    private static final String TAG = "";
+    private static final String TAG = "checkedDat";
     private  TextView register;
     private TextView forgotPass;
     private EditText loginUserId,loginPassword;
@@ -43,14 +44,16 @@ public class Log_in extends AppCompatActivity {
     private CollectionReference userCollection;
     private String stuId;
     private final static String MyPref = "MyPref";
+    private final static String SID = "SID";
     SharedPreferences sharedPreferences;
+    @SuppressLint("WorldReadableFiles")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
 
-        sharedPreferences  = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
+        sharedPreferences  = getSharedPreferences(MyPref, MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
 
         mAuth=FirebaseAuth.getInstance();
@@ -115,8 +118,9 @@ public class Log_in extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                                 if (task.isSuccessful()) {
                                                     for (QueryDocumentSnapshot document : task.getResult()) {
-                                                        User user = document.toObject(User.class);
-                                                        stuId = user.getId();
+                                                        stuId = document.get("id").toString();
+                                                        myEdit.putString("stuID",stuId);
+                                                        myEdit.apply();
 
                                                     }
                                                 } else {
@@ -124,9 +128,6 @@ public class Log_in extends AppCompatActivity {
                                                 }
                                             }
                                         });
-
-                                myEdit.putString("stuID",stuId);
-                                myEdit.apply();
 
                                 Intent intent=new Intent(Log_in.this,MainActivityExpenses.class);
                                 startActivity(intent);
