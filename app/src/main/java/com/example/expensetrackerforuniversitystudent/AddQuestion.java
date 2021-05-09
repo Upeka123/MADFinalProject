@@ -1,6 +1,8 @@
 package com.example.expensetrackerforuniversitystudent;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -31,6 +33,9 @@ public class AddQuestion extends AppCompatActivity {
     FirebaseFirestore firebaseDb;
     CollectionReference collectionReference;
     Question question;
+    String stuID;
+    private final static String MyPref = "MyPref";
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,11 @@ public class AddQuestion extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);//setting the toolbar
         toolbar.setTitle("Add a question");
         setSupportActionBar(toolbar);
+
+        sharedPreferences  = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
+        stuID = sharedPreferences.getString("stuID", null);
 
         //dropdown
         spinner = findViewById(R.id.addQuestionbtnSpinner);
@@ -68,7 +78,7 @@ public class AddQuestion extends AppCompatActivity {
             if(!Character.toString(que.charAt(lastIndexOfQue)).equals("?")){//adding ? at the end of the question if there isn't one
                 que = que + " ?";
             }
-            question = new Question("IT19951100", que, dep, timestamp.toString());
+            question = new Question(stuID, que, dep, timestamp.toString());
 
             collectionReference.add(question).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                 @Override

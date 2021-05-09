@@ -39,6 +39,7 @@ public class QandA extends AppCompatActivity {
     QuestionAdapter questionAdapter;
     MaterialButtonToggleGroup materialButtonToggleGroup;
     Toolbar toolbar;
+    String stuID;
     private final static String MyPref = "MyPref";
     SharedPreferences sharedPreferences;
     private FirebaseAuth mAuth;
@@ -53,6 +54,10 @@ public class QandA extends AppCompatActivity {
         getSupportActionBar().setTitle("Questions & Answers");
 
         sharedPreferences  = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
+        stuID = sharedPreferences.getString("stuID", null);
+
         mAuth=FirebaseAuth.getInstance();
 
         fltBtn = findViewById(R.id.addQFltBtn);
@@ -102,7 +107,7 @@ public class QandA extends AppCompatActivity {
     }
     public void fetchData(String type){
         if(type.equals("All")){
-            Query query = collectionReference.orderBy("studentID").whereNotEqualTo("studentID","IT19951100").orderBy("timestamp", Query.Direction.DESCENDING);
+            Query query = collectionReference.orderBy("studentID").whereNotEqualTo("studentID",stuID).orderBy("timestamp", Query.Direction.DESCENDING);
 
             FirestoreRecyclerOptions<Question> options = new FirestoreRecyclerOptions.Builder<Question>()
                     .setQuery(query, Question.class)
@@ -126,7 +131,7 @@ public class QandA extends AppCompatActivity {
             questionAdapter.startListening();
         }
         if(type.equals("My Questions")){
-            Query query = collectionReference.orderBy("timestamp",Query.Direction.DESCENDING).whereEqualTo("studentID","IT19951100");
+            Query query = collectionReference.orderBy("timestamp",Query.Direction.DESCENDING).whereEqualTo("studentID",stuID);
 
             FirestoreRecyclerOptions<Question> options = new FirestoreRecyclerOptions.Builder<Question>()
                     .setQuery(query, Question.class)
@@ -174,7 +179,6 @@ public class QandA extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.logOut:
                 sharedPreferences.edit().remove("stuID").apply();
-
                 mAuth.signOut();
                 Intent intent=new Intent(QandA.this, Log_in.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -1,5 +1,7 @@
 package com.example.expensetrackerforuniversitystudent;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -39,6 +41,10 @@ public class SubmitAnswers extends AppCompatActivity {
     Answer answer;
     AnswerAdapter answerAdapter;
     RecyclerView recyclerView;
+    String stuID;
+    private final static String MyPref = "MyPref";
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +53,11 @@ public class SubmitAnswers extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Submit answers");
         setSupportActionBar(toolbar);
+
+        sharedPreferences  = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
+        stuID = sharedPreferences.getString("stuID", null);
 
         recyclerView = findViewById(R.id.submit_answers_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(SubmitAnswers.this));
@@ -87,7 +98,7 @@ public class SubmitAnswers extends AppCompatActivity {
                 Toast.makeText(SubmitAnswers.this, "Enter an answer to submit!",Toast.LENGTH_LONG);
             }else{
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-                answer = new Answer("IT19951100", qID, timestamp.toString(), answerInput);
+                answer = new Answer(stuID, qID, timestamp.toString(), answerInput);
 
                 answerReference.add(answer).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override

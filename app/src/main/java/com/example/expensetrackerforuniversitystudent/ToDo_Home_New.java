@@ -292,7 +292,7 @@ public class ToDo_Home_New extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.logOut:
-                sharedPreferences.edit().remove("stuID").commit();
+                sharedPreferences.edit().remove("stuID").apply();
 
                 mAuth.signOut();
                 Intent intent=new Intent(ToDo_Home_New.this, Log_in.class);
