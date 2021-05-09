@@ -47,6 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
+                android:textSize="18sp"
                 android:layout_toStartOf="@id/submitanswers_question_item_dep"
                 android:text="@string/itxxxxxxxx"
                 android:textColor="@color/black"
@@ -57,6 +58,7 @@
             <TextView
                 android:id="@+id/submitanswers_question_item_dep"
                 android:layout_width="wrap_content"
+                android:textSize="18sp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:text="@string/it"
@@ -67,6 +69,7 @@
                 android:id="@+id/submitanswers_question_item_question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="18sp"
                 android:layout_below="@id/submitanswers_question_item_studentID"
                 android:text="@string/My_Question"
                 android:textColor="@color/black" />
