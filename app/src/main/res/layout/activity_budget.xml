@@ -8,15 +8,12 @@
     android:orientation="vertical">
 
 
-
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/homeToolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#000"
-        android:id="@+id/toolbar"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:elevation="4dp"/>
+        android:layout_height="wrap_content"
+        android:background="@color/yellow" />
+
 
     <TextView
         android:id="@+id/totalBudgetAmount"

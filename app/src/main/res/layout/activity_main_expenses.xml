@@ -8,14 +8,10 @@
     tools:context=".MainActivityExpenses">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/homeToolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#000"
-        android:id="@+id/toolbar"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:elevation="4dp">
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_height="wrap_content"
+        android:background="@color/yellow" />
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -30,26 +26,27 @@
             android:layout_below="@+id/linerLayout2"
             android:rowCount="3"
             android:columnCount="2"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="60dp">
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/homeBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="0"
-                android:layout_column="0"
-                android:layout_gravity="fill"
                 android:layout_rowWeight="1"
+                android:layout_column="0"
                 android:layout_columnWeight="1"
+                android:layout_gravity="fill"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="8dp"
                 android:background="#fff"
                 app:cardBackgroundColor="#FFC107"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="8dp"
 
-                
+
                 >
 
                 <LinearLayout
@@ -76,8 +73,9 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
-                android:id="@+id/todayCardView"
+                android:id="@+id/toDoCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="0"

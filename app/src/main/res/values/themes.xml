@@ -16,4 +16,11 @@
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">22sp</item>
     </style>
+    //rishan
+
+    <style name="Theme.SLIITToDoAPP.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.SLIITToDoAPP.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 </resources>
