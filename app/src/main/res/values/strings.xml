@@ -68,4 +68,23 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
+    //harindu
+    <string name="select_language">Select Language</string>
+    <string name="_1_10">1/10</string>
+    <string name="who_are_you">Who are you ?</string>
+    <string name="optionA">Robot</string>
+    <string name="optionB">Bot</string>
+    <string name="optionC">Human</string>
+    <string name="optionD">!Human</string>
+    <string name="your_score">Your Score. .</string>
+    <string name="all_level">All Level</string>
+    <string name="please_wait">Please wait....</string>
+    <string name="category">Category</string>
+
+    <!--Admob-->
+
+    <string name="app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="banner_ad">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstitial_ad">ca-app-pub-3940256099942544/1033173712</string>
+
 </resources>

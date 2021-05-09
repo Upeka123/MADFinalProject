@@ -16,5 +16,17 @@
     //rishan
     <color name="Sp_blue">#101f3d</color>
 
+    //harindu
+    <color name="colorPrimary">#7869FF</color>
+    <color name="colorPrimaryDark">#695BE6</color>
+    <color name="colorAccent">#F84A58</color>
+    <color name="white1">#FFFFFF</color>
+    <color name="black2">#2B2B2B</color>
+    <color name="gray">#682A2E2B</color>
+
+
+    <color name="greenGrad">#F1FFF5</color>
+    <color name="hint">#ffffff</color>
+    <color name="cpd">#978DF4</color>
 
 </resources>
