@@ -31,7 +31,7 @@ public class MainActivityExpenses extends AppCompatActivity {
         setContentView(R.layout.activity_main_expenses);
 
         toolbar=findViewById(R.id.homeToolbar);setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("App");
+        getSupportActionBar().setTitle("SmartUni");
 
         sharedPreferences  = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
         mAuth=FirebaseAuth.getInstance();
@@ -74,7 +74,7 @@ public class MainActivityExpenses extends AppCompatActivity {
         quizCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(MainActivityExpenses.this, CategoryActivity.class);
+                Intent intent =new Intent(MainActivityExpenses.this, SplashActivity.class);
                 startActivity(intent);
             }
 

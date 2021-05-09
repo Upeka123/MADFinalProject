@@ -60,6 +60,7 @@
         android:gravity="center"
         android:numColumns="auto_fit"
         android:padding="10dp"
+        android:background="@color/dark_blue"
         tools:listitem="@layout/sets_item" />
 
     <!--  ads here-->

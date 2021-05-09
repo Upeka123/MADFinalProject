@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="5dp"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    app:cardBackgroundColor="#101f3d"
+    app:cardCornerRadius="10dp">
+
+    <TextView
+        android:id="@+id/questionId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="65dp"
+        android:text="Question 1"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        tools:ignore="RtlCompat" />
+
+
+    <ImageView
+        android:id="@+id/delete_question"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/circle1"
+        android:padding="5dp"
+        android:backgroundTint="#ff4646"
+        android:src="@drawable/ic_baseline_delete_outline_24" />
+
+
+</androidx.cardview.widget.CardView>

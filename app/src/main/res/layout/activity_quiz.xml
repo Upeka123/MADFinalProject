@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/dark_blue">
 
         <ProgressBar
             android:layout_marginTop="-2dp"
@@ -45,7 +46,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="30dp"
             android:minHeight="150dp"
-            app:cardBackgroundColor="#101f3d"
+            app:cardBackgroundColor="@color/yellow"
             app:cardCornerRadius="20dp">
 
             <TextView

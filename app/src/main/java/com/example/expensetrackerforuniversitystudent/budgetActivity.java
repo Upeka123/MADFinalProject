@@ -43,6 +43,7 @@ import com.google.firebase.database.ValueEventListener;
 
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.joda.time.Months;
 import org.joda.time.MutableDateTime;
 
@@ -54,6 +55,7 @@ import java.time.MonthDay;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.Calendar;
+import java.util.Date;
 
 public class budgetActivity extends AppCompatActivity {
 
@@ -197,18 +199,19 @@ public class budgetActivity extends AppCompatActivity {
                     loader.setCanceledOnTouchOutside(false);
                     loader.show();
 
-                    String id = budgetRef.push().getKey();
-                    DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyy");
+                    Date today = new Date(); // Fri Jun 17 14:54:28 PDT 2016 Calendar cal = Calendar.getInstance(); cal.setTime(today);
                     Calendar cal = Calendar.getInstance();
-                    String date = dateFormat.format(cal.getTime());
+                    cal.setTime(today);
+                    int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+                    int month = cal.get(Calendar.MONTH); // 5 int year = cal.get(Calendar.YEAR);
 
-                    MutableDateTime epoch = new MutableDateTime();
-                    epoch.setDate(0);
-                    DateTime now = new DateTime();
-                    Months months = Months.monthsBetween(epoch, now);
+                    int year = cal.get(Calendar.YEAR);
+
+                    String id = budgetRef.push().getKey();
+                    String date = dayOfMonth + "/"+month+"/"+year;
 
 
-                    Data data = new Data(budgetItems, date, id, budgetNote, Integer.parseInt(budgetAmount), months.getMonths());
+                    Data data = new Data(budgetItems, date, id, budgetNote, Integer.parseInt(budgetAmount));
                     budgetRef.child(id).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -419,8 +422,8 @@ public class budgetActivity extends AppCompatActivity {
                 DateTime now = new DateTime();
                 Months months = Months.monthsBetween(epoch, now);
 
-
-                Data data = new Data(Item, date, post_key,note, amount, months.getMonths());
+;
+                Data data = new Data(Item, date, post_key,note, amount);
                 budgetRef.child(post_key).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -43,6 +44,7 @@ public class CategoryActivity extends AppCompatActivity {
         categorGridView = findViewById(R.id.categoryview);
         CategoryAdapter adapter = new CategoryAdapter(catList);
         categorGridView.setAdapter(adapter);
+        Log.d("listdata", "onCreate: ");
     }
 
     @Override
@@ -67,7 +69,7 @@ public class CategoryActivity extends AppCompatActivity {
                 break;
 
             case R.id.policy:
-                //startActivity(new Intent(CategoryActivity.this, Main1Activity.class));
+                startActivity(new Intent(CategoryActivity.this, Main1Activity.class));
 
 
                 Toast.makeText(this, "Add Privacy Policy URL", Toast.LENGTH_SHORT).show();
