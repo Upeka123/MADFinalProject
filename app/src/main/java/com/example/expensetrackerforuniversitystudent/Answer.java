@@ -1,21 +1,23 @@
 package com.example.expensetrackerforuniversitystudent;
 
 public class Answer {
+    //properties
     private String idNo;
     private String questionID;
     private String timestamp;
     private String answer;
 
     public Answer() {
-    }
+    }// empty constructor for firestore
 
     public Answer(String idNo, String questionID, String timestamp, String answer) {
         this.idNo = idNo;
         this.questionID = questionID;
         this.timestamp = timestamp;
         this.answer = answer;
-    }
+    }//constructore
 
+    //getters and setters
     public String getIdNo() {
         return idNo;
     }

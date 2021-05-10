@@ -20,14 +20,14 @@ public class AnswerAdapter extends FirestoreRecyclerAdapter<Answer, AnswerAdapte
     protected void onBindViewHolder(@NonNull AnswerAdapter.answersViewholder holder, int position, @NonNull Answer model) {
         holder.idNo.setText(model.getIdNo());
         holder.ans.setText(model.getAnswer());
-    }
+    }//setting values in our single item view
 
     @NonNull
     @Override
     public answersViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.answer_item, parent, false);
         return new AnswerAdapter.answersViewholder(view);
-    }
+    }//binding our layout to view
 
     public class answersViewholder extends RecyclerView.ViewHolder {
         TextView idNo, ans;
@@ -36,5 +36,5 @@ public class AnswerAdapter extends FirestoreRecyclerAdapter<Answer, AnswerAdapte
             idNo = itemView.findViewById(R.id.answer_item_studentID);
             ans = itemView.findViewById(R.id.answer_item_answer);
         }
-    }
+    }//view holder to manage single item in recyclerview
 }

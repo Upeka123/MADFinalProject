@@ -4,6 +4,7 @@ package com.example.expensetrackerforuniversitystudent;
 import java.io.Serializable;
 
 public class Question implements Serializable {
+    //properties
     private String studentID;
     private String question;
     private String department;
@@ -18,7 +19,7 @@ public class Question implements Serializable {
         this.question = question;
         this.department = department;
         this.timestamp = timestamp;
-    }
+    }//constructore
 
     //getters and setters
     public String getQuestion() {

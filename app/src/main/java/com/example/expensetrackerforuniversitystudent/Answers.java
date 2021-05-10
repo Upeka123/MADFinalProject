@@ -30,6 +30,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class Answers extends AppCompatActivity {
+    //declaring objects
     Toolbar toolbar;
     FirebaseFirestore firebaseFirestore;
     CollectionReference questionsReference, answersReference;
@@ -49,20 +50,28 @@ public class Answers extends AppCompatActivity {
         toolbar.setTitle("Answers");
         setSupportActionBar(toolbar);
 
+        //getting studentID through shared preference
         sharedPreferences  = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
 
         stuID = sharedPreferences.getString("stuID", null);
 
+        //setting layouts for opbjects
         idNo = findViewById(R.id.answers_question_item_studentID);
         question = findViewById(R.id.answers_question_item_question);
         dep = findViewById(R.id.answers_question_item_dep);
+        edtBtn = findViewById(R.id.EditQuestionBtn);
+        dltBtn = findViewById(R.id.DeleteQuestionBtn);
 
-        String qID = getIntent().getStringExtra("qID");
+
+        String qID = getIntent().getStringExtra("qID");//getting student id
+
+        //firebase reference
         firebaseFirestore = FirebaseFirestore.getInstance();
         questionsReference = firebaseFirestore.collection("Questions");
         answersReference = firebaseFirestore.collection("Answers");
 
+       //listener to firestore data
         answersReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value,
@@ -74,16 +83,16 @@ public class Answers extends AppCompatActivity {
             }
         });
 
+        //setting fields with values
         Question q = (Question) getIntent().getSerializableExtra("Question");
         idNo.setText(q.getStudentID());
         question.setText(q.getQuestion());
         dep.setText(q.getDepartment());
 
+        //recyclerview
         recyclerView = findViewById(R.id.answers_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(Answers.this));
 
-        edtBtn = findViewById(R.id.EditQuestionBtn);
-        dltBtn = findViewById(R.id.DeleteQuestionBtn);
 
         edtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,11 +102,14 @@ public class Answers extends AppCompatActivity {
                 intent.putExtra("Question", q);
                 startActivity(intent);
             }
-        });
+        });//click listener to edit btn
 
+        //delete record function
         dltBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //displaying alert before deleting
                 AlertDialog.Builder builder = new AlertDialog.Builder(Answers.this);
                 builder.setTitle("Do you want to delete this?");
                 builder.setCancelable(false);
@@ -124,13 +136,14 @@ public class Answers extends AppCompatActivity {
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //do nothing
+                        //do nothing if click no
                     }
                 });
             AlertDialog ad = builder.create();
-            ad.show();
+            ad.show();//displaying alert
             }
         });
+        //query to get firestore data
         Query query = answersReference.whereEqualTo("questionID", qID).orderBy("timestamp", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<Answer> options = new FirestoreRecyclerOptions.Builder<Answer>()
@@ -141,6 +154,7 @@ public class Answers extends AppCompatActivity {
         // Connecting Adapter class with the Recycler view*/
         recyclerView.setAdapter(answerAdapter);
 
+        //swipe to refresh function
         SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.answers_swipe);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -154,12 +168,12 @@ public class Answers extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        answerAdapter.startListening();
+        answerAdapter.startListening();//listening to database
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        answerAdapter.stopListening();
+        answerAdapter.stopListening();//stop listening to database
     }
 }
