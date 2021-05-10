@@ -31,6 +31,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class QandA extends AppCompatActivity {
+    //declaring objects
     private static final String TAG = "checkedData";
     FloatingActionButton fltBtn;
     FirebaseFirestore firebaseDb = FirebaseFirestore.getInstance();
@@ -53,20 +54,20 @@ public class QandA extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Questions & Answers");
 
+        //getting studentID through shared preference
         sharedPreferences  = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
-
         stuID = sharedPreferences.getString("stuID", "");
-//        Log.d(TAG, "s"+stuID);
-        System.out.println(stuID);
 
-        mAuth=FirebaseAuth.getInstance();
+        mAuth=FirebaseAuth.getInstance();//firebase auth
 
         fltBtn = findViewById(R.id.addQFltBtn);
         fltBtn.setOnClickListener( v -> {
             Intent intent = new Intent(QandA.this,AddQuestion.class);
             startActivity(intent);
-        });
+        });//new intent to floating button click event
+
+        //setting objects with xml properties
         materialButtonToggleGroup = findViewById(R.id.materialButtonToggleGroup);
         materialButtonToggleGroup.setSelectionRequired(true);
         SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipelayout);
@@ -75,6 +76,7 @@ public class QandA extends AppCompatActivity {
         recyclerView = findViewById(R.id.Questions_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //getting data
         collectionReference
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
@@ -98,6 +100,7 @@ public class QandA extends AppCompatActivity {
 
         fetchData("All");//to initially load the data
 
+        //swipe to refresh function
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -107,6 +110,8 @@ public class QandA extends AppCompatActivity {
             }
         });
     }
+
+    //function to fetch data
     public void fetchData(String type){
         if(type.equals("All")){
             Query query = collectionReference.orderBy("studentID").whereNotEqualTo("studentID",stuID).orderBy("timestamp", Query.Direction.DESCENDING);
@@ -176,6 +181,7 @@ public class QandA extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    //log out function
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){

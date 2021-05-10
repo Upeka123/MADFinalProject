@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.sql.Timestamp;
 
 public class EditQuestion extends AppCompatActivity {
+    //declaring objects
     Toolbar toolbar;
     Spinner spinner;
     EditText editText;
@@ -38,21 +39,26 @@ public class EditQuestion extends AppCompatActivity {
         toolbar.setTitle("Edit question");
         setSupportActionBar(toolbar);
 
+        //firebase reference
         firebaseDb = FirebaseFirestore.getInstance();
         collectionReference = firebaseDb.collection("Questions");
 
+        //dropdown
         spinner = findViewById(R.id.editQuestion_dep);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.departments, R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter((adapter));
 
+        //setting layouts for opbjects
         editText = findViewById(R.id.editQuestion_question);
         edtBtn = findViewById(R.id.editQuestion_edtBtn);
 
+        //getting data via extras
         String qID = getIntent().getStringExtra("qID");
         Question q = (Question) getIntent().getSerializableExtra("Question");
         editText.setText(q.getQuestion());
 
+        //setting department dropdown
         int spinnerPosition = 0;
         if("BM".equals(q.getDepartment())){
             spinnerPosition = 1;
@@ -65,10 +71,12 @@ public class EditQuestion extends AppCompatActivity {
         edtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //getting values
                 String editedQuestion = editText.getText().toString().trim();
                 String editedDep = spinner.getSelectedItem().toString();
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
+                //query to update
                 Question updatedQuestion = new Question(q.getStudentID(),editedQuestion,editedDep,timestamp.toString());
                 collectionReference.document(qID).set(updatedQuestion)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {

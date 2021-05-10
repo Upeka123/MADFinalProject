@@ -47,6 +47,7 @@ public class AddQuestion extends AppCompatActivity {
         toolbar.setTitle("Add a question");
         setSupportActionBar(toolbar);
 
+        //getting studentID through shared preference
         sharedPreferences  = getSharedPreferences(MyPref, Context.MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
 
@@ -89,7 +90,7 @@ public class AddQuestion extends AppCompatActivity {
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
-                public void onFailure(@NonNull Exception e) {
+                public void onFailure(@NonNull Exception e) {//to catch failures
                     Toast.makeText(AddQuestion.this, "Failed to add Question!", Toast.LENGTH_LONG).show();
                 }
             });

@@ -24,13 +24,13 @@ public class QuestionAdapter extends FirestoreRecyclerAdapter <Question, Questio
         holder.studentID.setText(model.getStudentID());
         holder.question.setText(model.getQuestion());
         holder.department.setText(model.getDepartment());
-    }
+    }//setting values in our single item view
 
     public questionsViewholder onCreateViewHolder(@NonNull ViewGroup parent,int viewType)
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_item, parent, false);
         return new QuestionAdapter.questionsViewholder(view);
-    }
+    }//binding our layout to view
 
     public class questionsViewholder extends RecyclerView.ViewHolder{
         TextView studentID, question, department;
@@ -47,7 +47,9 @@ public class QuestionAdapter extends FirestoreRecyclerAdapter <Question, Questio
                 }
             });
         }
-    }
+    }//view holder to manage single item in recyclerview
+
+    //interface to onClickevent
     public interface onItemClickListener{
         void onItemClick(DocumentSnapshot documentSnapshot, int position);
     }
